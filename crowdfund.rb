@@ -1,13 +1,18 @@
 require_relative 'project'
 require_relative 'fundrequest'
+require_relative 'grants'
 
 project1 = Projects.new("Project ABC", 1000, 5000)
 project2 = Projects.new("Project LMN", 300, 500)
 project3 = Projects.new("Project XYZ", 25, 75)
 project4 = Projects.new("Project TBD", 10000)
+grant1 = Grants.new("Grant 123", 100, 500)
+match1 = Projects.new("Match Me", 25, 250)
 projects = FundRequest.new("New Start-up Projects")
 puts projects.title
 projects.load_projects(ARGV.shift || "myProjects.csv")
+projects.add_project(grant1)
+projects.add_project(match1)
 
 loop do
   puts "\nHow many rounds of funding will there be today? ('quit' to exit)"
